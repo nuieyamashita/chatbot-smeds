@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot SMEDS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .chat-container {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      max-height: 600px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-header {
+      background-color: #0077cc;
+      color: white;
+      padding: 15px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    .chat-input button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-bottom-right-radius: 10px;
+    }
+    .chat-bubble {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .user {
+      background-color: #d1e7fd;
+      align-self: flex-end;
+    }
+    .bot {
+      background-color: #f1f0f0;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">Assistente SMEDS</div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Digite sua pergunta...">
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    let responses = {};
+
+    fetch('base_chatbot_smeds.json')
+      .then(response => response.json())
+      .then(data => responses = data)
+      .catch(error => console.error('Erro ao carregar base de dados:', error));
+
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (!message) return;
+      appendMessage(message, "user");
+      const lower = message.toLowerCase();
+
+      let reply = responses[lower];
+      if (!reply) {
+        for (const key in responses) {
+          if (lower.includes(key)) {
+            reply = responses[key];
+            break;
+          }
+        }
+      }
+      if (!reply) reply = "Desculpe, ainda não tenho resposta para isso.";
+      setTimeout(() => appendMessage(reply, "bot"), 500);
+      input.value = "";
+    }
+
+    function appendMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = `chat-bubble ${sender}`;
+      msg.innerText = text;
+      document.getElementById("chatMessages").appendChild(msg);
+      document.getElementById("chatMessages").scrollTop = document.getElementById("chatMessages").scrollHeight;
+    }
+  </script>
+</body>
+</html>

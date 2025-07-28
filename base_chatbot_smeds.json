@@ -1,0 +1,10 @@
+{
+  "como acessar o sistema smeds?": "Acesse o link https://www.smeds.com.br/login e insira seu e-mail e senha. Caso tenha esquecido a senha, use a opção 'Esqueci minha senha' ou entre em contato com o suporte.",
+  "como incluir um novo orçamento no smeds?": "Acesse a tela de Inclusão de Orçamentos, selecione o contrato, o produto e o departamento. Depois, escolha o tipo de cotação (habitual, judicial ou emergencial) e clique em '+ Incluir'.",
+  "quais são os tipos de cotação disponíveis no smeds?": "Existem três tipos: Cotação Habitual (72h), Cotação Judicial (24h) e Cotação Emergencial (48h). Selecione apenas uma por vez.",
+  "como cadastrar um empenho?": "Na tela de Cadastro de Empenho, selecione o cliente e contrato, informe o número e valor do empenho, associe os produtos e unidades, anexe os documentos e finalize clicando em '+ Incluir'.",
+  "como cadastrar uma nova secretaria?": "Na tela de Inclusão de Secretarias, informe os dados gerais, endereço e contato. Preencha todos os campos obrigatórios e clique em '+ Incluir'.",
+  "como adicionar medicamentos aos favoritos?": "Utilize a busca de medicamentos, marque os desejados e clique em 'Incluir nos Favoritos ⭐'. Isso facilita o uso recorrente.",
+  "como consultar cotações em andamento?": "Na tela de Consulta de Cotações, selecione o tipo de produto ou serviço e clique em 'Pesquisa'. O sistema exibirá a lista de cotações em andamento.",
+  "como consultar relatórios de consumo por empenho?": "Acesse o relatório de consumo por empenho, selecione o tipo de produto, empenho, OS, período e clique em 'Pesquisar' para visualizar os dados."
+}
